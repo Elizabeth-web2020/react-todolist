@@ -3,6 +3,11 @@ import { motion, useMotionValue, useTransform } from 'framer-motion';
 
 import "./style.css";
 
+interface Props {
+  checked?: string,
+  handleCheck?: (param?: any) => void
+}
+
 const checkVariants = {
   initial: {
     color: '#fff',
@@ -19,7 +24,7 @@ const boxVariants = {
   unchecked: { background: 'var(--gray-2)', transition: { duration: 0.1 } },
 };
 
-const CheckButton = ({ checked, handleCheck }) => {
+const CheckButton = ({ checked, handleCheck }: Props) => {
   const pathLength = useMotionValue(0);
   const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1]);
 

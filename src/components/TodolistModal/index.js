@@ -19,7 +19,7 @@ const TodolistModal = ({ type, modalOpen, setModalOpen, todo }) => {
     } else {
       setTitle('');
       setStatus('incomplete');
-    }
+    };
   }, [type, todo, modalOpen])
 
   const handleSubmit = useCallback((e) => {
@@ -28,7 +28,7 @@ const TodolistModal = ({ type, modalOpen, setModalOpen, todo }) => {
     if (title === '') {
       toast.error('Please enter a title');
       return;
-    }
+    };
 
     if (title && status) {
       if (type === 'add') {
@@ -41,7 +41,7 @@ const TodolistModal = ({ type, modalOpen, setModalOpen, todo }) => {
         })
         );
         toast.success('Task Added Successfully');
-      }
+      };
 
       if (type === 'update') {
         if (todo.title !== title || todo.status !== status) {
@@ -52,11 +52,11 @@ const TodolistModal = ({ type, modalOpen, setModalOpen, todo }) => {
           }))
         } else {
           toast.error('No Changes Made')
-        }
-      }
+        };
+      };
 
       setModalOpen(false);
-    } 
+    };
   });
 
   return (
