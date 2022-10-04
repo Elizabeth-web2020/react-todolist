@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateFilterStatus } from '../../slices/todoSlice';
 import Button, { SelectButton } from "../Button";
@@ -11,9 +11,9 @@ function TodolistHeader() {
   const filterStatus = useSelector((state) => state.todo.filterStatus);
   const dispatch = useDispatch();
 
-  const updateFilter = (e) => {
+  const updateFilter = useCallback((e) => {
     dispatch(updateFilterStatus(e.target.value))
-  };
+  }, []);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { v4 as uuid } from 'uuid';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
@@ -22,7 +22,7 @@ const TodolistModal = ({ type, modalOpen, setModalOpen, todo }) => {
     }
   }, [type, todo, modalOpen])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
     if (title === '') {
@@ -41,7 +41,6 @@ const TodolistModal = ({ type, modalOpen, setModalOpen, todo }) => {
         })
         );
         toast.success('Task Added Successfully');
-        // setModalOpen(false);
       }
 
       if (type === 'update') {
@@ -58,7 +57,7 @@ const TodolistModal = ({ type, modalOpen, setModalOpen, todo }) => {
 
       setModalOpen(false);
     } 
-  };
+  });
 
   return (
     modalOpen && (

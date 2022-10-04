@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import TodolistItem from '../TodolistItem';
 
@@ -11,17 +11,17 @@ function TodolistContent() {
 
   sortedTodoList.sort((a, b) => new Date(b.time) - new Date(a.time));
 
-  const activeTasksCounting = sortedTodoList.filter((item) => {
+  const activeTasksCounting = useCallback(sortedTodoList.filter((item) => {
     return item.status === 'incomplete';
-  });
+  }));
 
-  const filteredTodoList = sortedTodoList.filter((item) => {
+  const filteredTodoList = useCallback(sortedTodoList.filter((item) => {
     if (filterStatus === 'all') {
       return true;
     };
 
     return item.status === filterStatus;
-  });
+  }));
 
   return (
     <div className='content__wrapper'>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { format } from "date-fns";
 import toast from "react-hot-toast";
@@ -22,16 +22,16 @@ const TodolistItem = ({ todo }) => {
     }
   }, [todo.status])
 
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     dispatch(deleteTodo(todo.id));
     toast.success("Todo Deleted Successfully");
-  };
+  }, []);
 
-  const handleUpdate = () => {
+  const handleUpdate = useCallback(() => {
     setUpdateModalOpen(true);
-  };
+  }, []);
 
-  const handleCheck = () => {
+  const handleCheck = useCallback(() => {
     setChecked(!checked);
     dispatch(
       updateTodo({
@@ -39,7 +39,7 @@ const TodolistItem = ({ todo }) => {
         status: checked ? 'incomplete' : 'complete'
       })
     )
-  };
+  });
 
   return (
     <>
