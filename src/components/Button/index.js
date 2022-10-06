@@ -1,16 +1,6 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
 import "./style.css";
-
-// interface Props {
-//   children?: ReactNode,
-//   type?: string,
-//   variant?: string,
-//   id?: string,
-//   value?: string,
-//   onClick?: React.MouseEventHandler<HTMLElement>,
-//   onChange?: React.MouseEventHandler<HTMLElement>
-// }
 
 function Button({ children, type, variant, ...rest }) {
   return (

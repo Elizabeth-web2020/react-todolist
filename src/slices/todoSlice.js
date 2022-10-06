@@ -56,6 +56,7 @@ export const todoSlice = createSlice({
       }
     },
     deleteTodo: (state, action) => {
+      console.log(action.payload)
       const todoList = localStorage.getItem('todoList');
       if (todoList) {
         const todoListArr = JSON.parse(todoList);
